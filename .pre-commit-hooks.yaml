@@ -1,0 +1,6 @@
+- id: cmake-build
+  name: CMake Build
+  description: Build CMake Applications
+  entry: scripts/cmake_build.sh
+  language: script
+  pass_filenames: false
