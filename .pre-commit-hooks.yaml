@@ -1,6 +1,17 @@
 - id: cmake-build
-  name: CMake Build
-  description: Build CMake Applications
+  name: cmake build
+  description: build cmake applications
   entry: scripts/cmake_build.sh
   language: script
   pass_filenames: false
+
+- id: clang-tidy
+  name: run clang-tidy
+  description: linting tool for c/c++
+  entry: clang-tidy -p build
+  types_or: [c, c++]
+  language: system
+  args: [
+    "-checks=-*,clang-*,google-*,-google-readability-braces-around-statements",
+    "-warnings-as-errors=*"
+  ]
