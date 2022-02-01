@@ -15,3 +15,10 @@
     "-checks=-*,clang-*,google-*,-google-readability-braces-around-statements",
     "-warnings-as-errors=*"
   ]
+
+- id: include-what-you-use
+  name: run include-what-you-use
+  description: analyze headers in c/c++
+  entry: scripts/include-what-you-use.sh
+  types_or: [c, c++]
+  language: script
