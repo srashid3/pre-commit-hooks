@@ -1,0 +1,25 @@
+- id: cmake-build
+  name: cmake build
+  description: build cmake applications
+  entry: scripts/cmake-build.sh
+  language: script
+  pass_filenames: false
+
+- id: clang-tidy
+  name: run clang-tidy
+  description: linting tool for c/c++
+  entry: clang-tidy -p build
+  types_or: [c, c++]
+  language: system
+  args:
+    - "-checks=-*,clang-*,google-*,
+       -google-readability-braces-around-statements,
+       -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling"
+    - "-warnings-as-errors=*"
+
+- id: include-what-you-use
+  name: run include-what-you-use
+  description: analyze headers in c/c++
+  entry: scripts/include-what-you-use.sh
+  types_or: [c, c++]
+  language: script

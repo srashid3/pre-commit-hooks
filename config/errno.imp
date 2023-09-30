@@ -1,0 +1,6 @@
+[
+  { symbol: ["ENOMEM", "private", "<errno.h>", "public"] },
+  { symbol: ["EINVAL", "private", "<errno.h>", "public"] },
+  { symbol: ["ENOSPC", "private", "<errno.h>", "public"] },
+  { symbol: ["ENOENT", "private", "<errno.h>", "public"] }
+]
