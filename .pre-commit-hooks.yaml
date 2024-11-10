@@ -1,15 +1,16 @@
 - id: cmake-build
-  name: cmake build
-  description: build cmake applications
+  name: CMake Build
+  description: Build project with CMake.
   entry: scripts/cmake-build.sh
   language: script
   pass_filenames: false
 
 - id: clang-tidy
-  name: run clang-tidy
-  description: linting tool for c/c++
+  name: Run Linter
+  description: Run clang-tidy for C/C++ project.
   entry: clang-tidy -p build
   types_or: [c, c++]
+  exclude: ^(tests|external)/
   language: system
   args:
     - "-checks=-*,clang-*,google-*,
@@ -18,8 +19,17 @@
     - "-warnings-as-errors=*"
 
 - id: include-what-you-use
-  name: run include-what-you-use
-  description: analyze headers in c/c++
+  name: Include What You Use
+  description: Analyze headers for C/C++ project.
   entry: scripts/include-what-you-use.sh
   types_or: [c, c++]
+  exclude: ^(tests|external)/
   language: script
+
+- id: pytest
+  name: Run Tests
+  description: Run pytest for unit tests.
+  entry: pytest
+  language: system
+  pass_filenames: false
+  stages: [pre-push]
