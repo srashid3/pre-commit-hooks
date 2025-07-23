@@ -25,3 +25,12 @@
   types_or: [c, c++]
   exclude: ^(tests|external)/
   language: script
+
+- id: pytest
+  name: Run Tests
+  description: Run unit tests with pytest.
+  entry: pytest
+  language: system
+  pass_filenames: false
+  always_run: true
+  stages: [pre-push]
