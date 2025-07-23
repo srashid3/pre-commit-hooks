@@ -1,0 +1,27 @@
+- id: cmake-build
+  name: CMake Build
+  description: Build project with CMake.
+  entry: scripts/cmake-build.sh
+  language: script
+  pass_filenames: false
+
+- id: clang-tidy
+  name: Run Linter
+  description: Format code with clang-tidy.
+  entry: clang-tidy -p build
+  types_or: [c, c++]
+  exclude: ^(tests|external)/
+  language: system
+  args:
+    - "-checks=-*,clang-*,google-*,
+       -google-readability-braces-around-statements,
+       -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling"
+    - "-warnings-as-errors=*"
+
+- id: include-what-you-use
+  name: Include What You Use
+  description: Analyze headers in source files.
+  entry: scripts/include-what-you-use.sh
+  types_or: [c, c++]
+  exclude: ^(tests|external)/
+  language: script

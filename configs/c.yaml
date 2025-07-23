@@ -1,0 +1,16 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+    name: Remove Whitespace
+  - id: end-of-file-fixer
+    name: Fix EOF
+  - id: check-added-large-files
+    name: Check for Large Files
+- repo: https://github.com/srashid3/pre-commit-hooks
+  rev: v1.0.0
+  hooks:
+  - id: cmake-build
+  - id: clang-tidy
+  - id: include-what-you-use
