@@ -1,3 +1,10 @@
+- id: unstage-files
+  name: Unstage Files
+  description: Ignore files based on keywords.
+  entry: scripts/unstage-files.sh
+  language: script
+  pass_filenames: false
+
 - id: cmake-build
   name: CMake Build
   description: Build project with CMake.
